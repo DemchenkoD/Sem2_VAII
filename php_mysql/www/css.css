@@ -1,0 +1,173 @@
+
+.logo {width: 50px; height:50px; }
+.nav-link:hover {text-decoration: underline;}
+.web_name{font-size: 25px}
+.navbar{
+    font-size: 20px;
+    background-color:aqua !important;
+}
+
+.video_full_screen {
+    width: 100%;
+    height: 100%;
+}
+.carousel-caption {
+    transform: translateY(-50%);
+    bottom: initial;
+    top: 35%;
+
+}
+
+.carousel-control-prev-icon {
+    background-image: url("arrow-left-circle-fill.svg");
+}
+.carousel-control-next-icon {
+    background-image: url("arrow-right-circle-fill.svg");
+
+}
+.carousel-control-next{  right: -15%;  }
+.carousel-control-prev {    left: -15%; }
+.video_main_text {
+    font-weight: 600;
+    font-style: italic;
+    opacity: 0.6;
+    color: aqua;
+}
+.h1_title {
+    margin-top: 20px;
+    margin-bottom: 50px;
+
+}
+.h4_contacts {
+    text-align: left;
+    margin-left: 50px;
+
+}
+.card-img-top {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+}
+.margin_bottom {
+    margin-bottom: 30px;
+}
+.card_2 {
+    width: 300px;
+    margin-bottom: 30px;
+
+}
+
+@media screen and (min-width : 576px)
+{
+    .video_main_text
+    {
+        font-size: 35px!important;
+    }
+    .card_2 {
+        width: 200px;
+    }
+    .card-img-top {
+        width: 200px;
+        height: 280px;
+        object-fit: cover;
+    }
+}
+@media screen and (min-width : 768px)
+{
+    .video_main_text
+    {
+        font-size: 55px!important;
+    }
+    .card_2 {
+        width: 200px;
+
+    }
+    .card-img-top {
+        width: 200px;
+        height: 280px;
+        object-fit: cover;
+    }
+}
+@media screen and (min-width : 992px)
+{
+    .video_main_text
+    {
+        font-size: 80px!important;
+    }
+    .card_2 {
+        width: 200px;
+    }
+    .card-img-top {
+        width: 200px;
+        height: 280px;
+        object-fit: cover;
+    }
+}
+@media screen and (min-width : 1400px)
+{
+    .video_main_text
+    {
+        font-size: 110px!important;
+    }
+    .card-img-top {
+        width: 300px;
+        height: 400px;
+        object-fit: cover;
+    }
+    .card_2 {
+        width: 300px;
+        margin-bottom: 30px;
+
+    }
+
+}
+
+div[data-tooltip] {
+    display: inline;
+    font-weight: bold;
+    position: relative;
+}
+.tt {
+    display:block;
+    width: 200px;
+
+    position: absolute;;
+    background-color: white;
+    z-index: 1;
+    padding: 3px;
+    top:120%;
+    left:0;
+}
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+#myBtn:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+}
+
+
+
