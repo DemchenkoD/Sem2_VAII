@@ -53,7 +53,7 @@ class DBStorage
         elseif (str_contains($v2, '@') == false) {
             $everything_fine = false;
         }
-        elseif ($v2>10 || $v2 < 0) {
+        elseif ($v3>10 || $v3 < 0) {
             $everything_fine = false;
         }
         if ($everything_fine) {
