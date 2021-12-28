@@ -34,13 +34,19 @@
                     </li>
 
                 </ul>
+                <?php if(isset($_SESSION['logged_user'])) : ?>
+                <form class="d-flex" method="post">
+                    <div class="me-4"> Hello, <?php echo $_SESSION['logged_user']->getLogin(); ?> </div>
+                <input class="btn btn-success me-2" type="submit" name ='logout' value="Log out">
+                </form>
+                <?php else : ?>
                 <form class="d-flex">
 
                     <a href = "sign_up.php" class="btn btn-success me-2" type="submit">Sign up</a>
                     <a href = "login.php" class="btn btn-success" type="submit">Login</a>
 
                 </form>
-
+                <?php endif; ?>
             </div>
         </div>
     </nav>

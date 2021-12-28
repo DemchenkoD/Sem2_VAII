@@ -1,6 +1,7 @@
 <?php
 require_once "Employee.php";
 require_once "Review.php";
+require_once "User.php";
 class DBStorage
 {
     private $db;
@@ -8,7 +9,10 @@ class DBStorage
     public function __construct()
     {
         $this->db = new mysqli('localhost', 'root', 'dtb456', 'db1');
-
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
     }
 
     public function getEmployeesData() {
@@ -16,7 +20,7 @@ class DBStorage
         $result = [];
         $sql = "SELECT * FROM employees";
         $dbResult = $this->db->query($sql);
-        if ($dbResult->num_rows > 0){
+         if ($dbResult->num_rows > 0){
             while ($record = $dbResult->fetch_assoc()) {
                 $result[] = new Employee($record['id'], $record['name'], $record['description'], $record['photo_path']);
 
@@ -37,6 +41,18 @@ class DBStorage
 
             }
 
+        }
+        return $result;
+    }
+    public function getUsersData(): array
+    {
+        $result = [];
+        $sql = "SELECT * FROM users ORDER BY id";
+        $dbResult = $this->db->query($sql);
+        if ($dbResult->num_rows > 0){
+            while ($record = $dbResult->fetch_assoc()) {
+                $result[] = new User($record['id'], $record['login'], $record['mail'], null, $record['registration_date']);
+            }
         }
         return $result;
     }
@@ -92,5 +108,78 @@ class DBStorage
         $stmt->execute();
     }
 
+    public function registrateUser(User $user) {
+        $everything_fine = true;
+        $v1 = $user->getLogin();
+        $v2 = $user->getMail();
+        $v3 = $user->getPassword();
+        $v4 = $user->getRegistrationDate();
+        if(empty($v1) || empty($v2) || empty($v3) || empty($v4)) {
+            $everything_fine = false;
+        }
+        elseif (str_contains($v2, '@') == false) {
+            $everything_fine = false;
+        }
+        if (!$this->checkUniqUserLogin($v1) || !$this->checkUniqUserMail($v2)) {
+            $everything_fine = false;
+        }
 
+
+        if ($everything_fine) {
+            $stmt = $this->db->prepare("INSERT INTO users(login, mail, password, registration_date) VALUES(?,?,?,?)");
+            $stmt->bind_param('ssss', $v1, $v2, $v3, $v4);
+            $stmt->execute();
+            return true;
+        }
+        return false;
+
+    }
+    public function checkUniqUserLogin( $login) {
+        //return $this->db->query("SELECT COUNT(*) FROM employees");
+            $result = $this->db->query("SELECT * FROM users WHERE login = '".$login."'");
+            //$result = $resultDB->fetch_assoc();
+            //echo "<script type='text/javascript'>alert('Log ".$result."')</script>";
+            if ($result->num_rows > 0) {
+                return false;
+            }
+            return true;
+    }
+    public function checkUniqUserMail( $mail) {
+        //return $this->db->query("SELECT COUNT(*) FROM employees");
+        $result = $this->db->query("SELECT * FROM users WHERE mail = '".$mail."'");
+        //$result = $resultDB->fetch_assoc();
+        //echo "<script type='text/javascript'>alert(Mail '".$result."')</script>";
+        if ($result->num_rows > 0) {
+            return false;
+        }
+        return true;
+    }
+    public function getUser( $login)
+    {
+        $sql = "SELECT * FROM users WHERE login='".$login."'";
+        $dbResult = $this->db->query($sql);
+        if ($dbResult->num_rows > 0){
+            $record = $dbResult->fetch_assoc() ;
+            $result = new User($record['id'], $record['login'], $record['mail'], $record['password'], $record['registration_date']);
+            return $result;
+
+
+        }
+        return null;
+
+    }
+    public function DeleteUser( $id)
+    {
+        $sql = "SELECT * FROM users WHERE login='".$id."'";
+        $dbResult = $this->db->query($sql);
+        if ($dbResult->num_rows > 0){
+            $record = $dbResult->fetch_assoc() ;
+            $result = new User($record['id'], $record['login'], $record['mail'], $record['password'], $record['registration_date']);
+            //return $result;
+
+
+        }
+        return null;
+
+    }
 }

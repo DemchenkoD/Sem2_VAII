@@ -1,3 +1,9 @@
+<?php
+require "php_files/classes/App.php";
+
+$app = new App();
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,7 +20,8 @@
 <?php
 include("php_files/header_navbar.php");
 ?>
-<section class="vh-100 gradient-custom">
+<form method="post">
+<section class="vh-150 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -27,31 +34,32 @@ include("php_files/header_navbar.php");
                             <p class="text-white-50 mb-5">Please create an account!</p>
 
                             <div class="form-outline form-white mb-4">
+                                <h5>Login:</h5>
+                                <input type="login" name="login_inp" class="form-control form-control-lg" value="<?php echo @$_POST['login_inp']; ?>" />
+
+                            </div>
+                            <div class="form-outline form-white mb-4">
                                 <h5>Email:</h5>
-                                <input type="email" id="email_inp" class="form-control form-control-lg" />
+                                <input type="email" name="email_inp" class="form-control form-control-lg" value="<?php echo @$_POST['email_inp']; ?>"/>
 
                             </div>
 
                             <div class="form-outline form-white mb-4">
                                 <h5>Password: </h5>
 
-                                <input type="password" id="password_inp" class="form-control form-control-lg" />
+                                <input type="password" name="password_inp" class="form-control form-control-lg" value="<?php echo @$_POST['password_inp']; ?>" />
 
                             </div>
                             <div class="form-outline form-white mb-4">
                                 <h5>Retype your password: </h5>
 
-                                <input type="password" id="password2_inp" class="form-control form-control-lg" />
+                                <input type="password" name="password2_inp" class="form-control form-control-lg" value="<?php echo @$_POST['password2_inp']; ?>" />
 
                             </div>
 
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit" onclick="sign_up()">Sign up</button>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit" name='signup' >Sign up</button>
 
-                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
-                                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
-                                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                            </div>
+
 
                         </div>
 
@@ -65,7 +73,7 @@ include("php_files/header_navbar.php");
         </div>
     </div>
 </section>
-
+</form>
 </body>
 </html>
 

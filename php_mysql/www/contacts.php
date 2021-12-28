@@ -1,3 +1,8 @@
+<?php
+require "php_files/classes/App.php";
+
+$app = new App();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

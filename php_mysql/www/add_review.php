@@ -28,10 +28,20 @@ include("php_files/header_navbar.php");
     <form method="post">
         <div class="form-group">
 
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" maxlength="30" id="name" name="name" aria-describedby="name" placeholder="Add name" ><br>
-            <label for="mail">Mail:</label>
-            <input type="email" class="form-control" maxlength="30" name="mail" id="add_review_email"  placeholder="Add mail"><br>
+
+            <?php if(isset($_SESSION['logged_user'])) : ?>
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" maxlength="30" id="name" name="name" aria-describedby="name" value = "<?php echo $_SESSION['logged_user']->getLogin(); ?>" readonly="readonly"><br>
+                <label for="mail">Mail:</label>
+                <input type="email" class="form-control" maxlength="30" name="mail" id="add_review_email"  value = "<?php echo $_SESSION['logged_user']->getMail(); ?>" readonly="readonly"><br>
+
+            <?php else : ?>
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" maxlength="30" id="name" name="name" aria-describedby="name" placeholder="Add name" ><br>
+                <label for="mail">Mail:</label>
+                <input type="email" class="form-control" maxlength="30" name="mail" id="add_review_email"  placeholder="Add mail"><br>
+
+            <?php endif; ?>
             <label for="rating">Rating:</label>
             <input type="number"  class="form-control" min="0" max="10" name="rating" ><br>
             <label for="comment">Comment:</label>
