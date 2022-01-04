@@ -25,15 +25,13 @@ $app = new App();
 include("php_files/header_navbar.php");
 ?>
 
-<h1 class="container h1_title"> BLOG </h1>
+<h1 class="container h1_title"> Reviews: </h1>
 
 <selection>
 
     <div class="container">
         <?php if(isset($_SESSION['logged_user'])) : ?>
-            <a class="btn btn-success" href="add_review.php" role="button">Add</a>
-            <a class="btn btn-success" href="users.php" role="button">18+</a>
-            <a class="btn btn-success" href="users2.php" role="button">20+</a>
+            <a class="btn btn-success margin_bottom" href="add_review.php" role="button">Add review</a>
         <?php else : ?>
             <div>You need to log in to add review</div>
         <?php endif; ?>
@@ -61,10 +59,13 @@ include("php_files/header_navbar.php");
                 <?= $rev->getDislikes();?>
                 <i class ="bi bi-hand-thumbs-down"></i>
             </a>
-            <a href="?delete=<?=$rev->getID()?>" class="btn btn-warning">
-                Delete
+            <?php if(isset($_SESSION['logged_user'])) : ?>
+                    <?php if($_SESSION['logged_user']->getLogin() == $rev->getAuthor() ||
+                                $_SESSION['logged_user']->getLogin() == "admin") : ?>
+                        <a href="?delete=<?=$rev->getID()?>" class="btn btn-warning">Delete</a>
+                    <?php endif; ?>
+            <?php endif; ?>
 
-            </a>
 
         <?php
             echo '</div>';

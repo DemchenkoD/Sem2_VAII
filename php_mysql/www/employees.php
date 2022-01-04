@@ -1,3 +1,16 @@
+<?php
+    require "php_files/classes/DBStorage.php";
+
+    $db = new DBStorage();
+
+    require "php_files/classes/App.php";
+
+    $app = new App();
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,149 +20,143 @@
     <?php
     include("php_files/header_links.php");
     ?>
+
 </head>
 <body>
 <?php
 include("php_files/header_navbar.php");
 ?>
 <h1 class="container h1_title"> Our Employees: </h1>
-
 <section>
     <div class="container">
+
+        <?php if(isset($_SESSION['logged_user'])) : ?>
+
+            <?php if($_SESSION['logged_user']->getLogin() == "admin") : ?>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary margin_bottom" data-toggle="modal" data-target="#addEmployee">
+                    Add Employee
+                </button>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <!-- Modal -->
+        <div class="modal fade" id="addEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class = "form-group">
+                            <label>Name 1</label>
+                            <input type = "text" id ="name1"
+                                   class="form-control" placeholder="Name 1">
+                        </div>
+                        <div class = "form-group">
+                            <label>Description 1</label>
+                            <input type = "text" id ="description1"
+                                   class="form-control" placeholder="Description 1">
+                        </div>
+                        <div class = "form-group">
+                            <label>Photo path 1</label>
+                            <input type = "text" id ="photo_path1"
+                                   class="form-control" placeholder="Photo path 1">
+                        </div>
+                        <div class = "form-group">
+                            <label>Name 2</label>
+                            <input type = "text" id ="name2"
+                                   class="form-control" placeholder="Name 2">
+                        </div>
+                        <div class = "form-group">
+                            <label>Description 2</label>
+                            <input type = "text" id ="description2"
+                                   class="form-control" placeholder="Description 2">
+                        </div>
+                        <div class = "form-group">
+                            <label>Photo path 2</label>
+                            <input type = "text" id ="photo_path2"
+                                   class="form-control" placeholder="Photo path 2">
+                        </div>
+                        <div class = "form-group">
+                            <label>Name 3</label>
+                            <input type = "text" id ="name3"
+                                   class="form-control" placeholder="Name 3">
+                        </div>
+                        <div class = "form-group">
+                            <label>Description 3</label>
+                            <input type = "text" id ="description3"
+                                   class="form-control" placeholder="Description 3">
+                        </div>
+                        <div class = "form-group">
+                            <label>Photo path 3</label>
+                            <input type = "text" id ="photo_path3"
+                                   class="form-control" placeholder="Photo path 3">
+                        </div>
+                        <div class = "form-group">
+                            <label>Name 4</label>
+                            <input type = "text" id ="name4"
+                                   class="form-control" placeholder="Name 4">
+                        </div>
+                        <div class = "form-group">
+                            <label>Description 4</label>
+                            <input type = "text" id ="description4"
+                                   class="form-control" placeholder="Description 4">
+                        </div>
+                        <div class = "form-group">
+                            <label>Photo path 4</label>
+                            <input type = "text" id ="photo_path4"
+                                   class="form-control" placeholder="Photo path 4">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" name="add_employee" onclick="addEmployee()" >Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row justify-content-between">
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/1.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rastislav</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/2.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Bohuš</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/3.jfif" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Arpád</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/4.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Jozef</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-between">
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/5.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Bonifác</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/6.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Oliver</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/7.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Michal</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/8.jpeg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Lukáš</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="row justify-content-between">
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/9.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Adam</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/10.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Dávid</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/11.jpeg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">František</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col col-md-6 col-lg">
-                            <div class="card ">
-                                <img src="img/employees/12.jpg" class="card-img-top container" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Jozef</h5>
-                                    <p class="card-text">Design guru</p>
-                                    <a href="#" class="btn btn-primary">Read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                    $count = $db->getCountEmployees();
+                    $i = 0;
+                    $firstRun = true;
+                    /** @var Employee $empl */
+                foreach ($db->getEmployeesData() as $empl) {
+                        $i++;
+                        if ($firstRun) {
+                            echo '<div class="carousel-item active">';
+                            echo '    <div class="row justify-content-between">';
+                            $firstRun = false;
+
+                        }
+                        elseif ($i % 4 == 1 and $firstRun == false) {
+                            echo '<div class="carousel-item">';
+                            echo '    <div class="row justify-content-between">';
+                        }
+
+                        echo '        <div class="col col-md-6 col-lg">';
+                        echo '            <div class="card card_2 ">';
+                        echo '                <img src="' . $empl->getPhotoPath() . '" class="card-img-top container" alt="...">';
+                        echo '                <div class="card-body">';
+                        echo '                    <h5 class="card-title">'. $empl->getName() .'</h5>';
+                        echo '                    <p class="card-text">'. $empl->getDescription() .'</p>';
+                        echo '                    <a href="#" class="btn btn-primary">Read more</a>';
+                        echo '                </div>';
+                        echo '            </div>';
+                        echo '        </div>';
+                    if ($i % 4 == 0) {
+                        echo '    </div>';
+                        echo '</div>';
+                    }
+                    }
+
+                ?>
             </div>
             <button class="carousel-control-prev container" type="button" data-bs-target="#carouselExampleControls"
                     data-bs-slide="prev">
@@ -169,15 +176,3 @@ include("php_files/header_navbar.php");
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

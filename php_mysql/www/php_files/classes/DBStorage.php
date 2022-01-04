@@ -107,6 +107,12 @@ class DBStorage
         $stmt->bind_param('i',$id);
         $stmt->execute();
     }
+    public function DeleteUser(mixed $id)
+    {
+        $stmt = $this->db->prepare("DELETE FROM users WHERE id = ?");
+        $stmt->bind_param('i',$id);
+        $stmt->execute();
+    }
 
     public function registrateUser(User $user) {
         $everything_fine = true;
@@ -123,7 +129,6 @@ class DBStorage
         if (!$this->checkUniqUserLogin($v1) || !$this->checkUniqUserMail($v2)) {
             $everything_fine = false;
         }
-
 
         if ($everything_fine) {
             $stmt = $this->db->prepare("INSERT INTO users(login, mail, password, registration_date) VALUES(?,?,?,?)");
@@ -145,10 +150,8 @@ class DBStorage
             return true;
     }
     public function checkUniqUserMail( $mail) {
-        //return $this->db->query("SELECT COUNT(*) FROM employees");
+
         $result = $this->db->query("SELECT * FROM users WHERE mail = '".$mail."'");
-        //$result = $resultDB->fetch_assoc();
-        //echo "<script type='text/javascript'>alert(Mail '".$result."')</script>";
         if ($result->num_rows > 0) {
             return false;
         }
@@ -162,24 +165,62 @@ class DBStorage
             $record = $dbResult->fetch_assoc() ;
             $result = new User($record['id'], $record['login'], $record['mail'], $record['password'], $record['registration_date']);
             return $result;
-
-
         }
         return null;
-
     }
-    public function DeleteUser( $id)
+    public function getUserById( $id)
     {
-        $sql = "SELECT * FROM users WHERE login='".$id."'";
+        $sql = "SELECT * FROM users WHERE id='".$id."'";
         $dbResult = $this->db->query($sql);
         if ($dbResult->num_rows > 0){
             $record = $dbResult->fetch_assoc() ;
-            $result = new User($record['id'], $record['login'], $record['mail'], $record['password'], $record['registration_date']);
-            //return $result;
-
+            return $record;
 
         }
         return null;
 
     }
+    public function updateUser(User $user)
+    {
+        $stmt = $this->db->prepare("UPDATE users SET login = '".$user->getLogin()."', mail = '".$user->getMail()."', registration_date = '".$user->getRegistrationDate()."' WHERE id ='".$user->getId()."'");
+        $stmt2 = "UPDATE users SET login = '".$user->getLogin()."', mail = '".$user->getMail()."', registration_date = '".$user->getRegistrationDate()."' WHERE id ='".$user->getId()."'";
+        $stmt->execute();
+        return $stmt2;
+    }
+
+    public function addEmploee($name1, $description1, $photo_path1,
+                               $name2, $description2, $photo_path2,
+                               $name3, $description3, $photo_path3,
+                               $name4, $description4, $photo_path4) {
+        $everything_fine = true;
+
+        if(empty($name1) || empty($description1) || empty($photo_path1)) {
+            $everything_fine = false;
+        }
+        if(empty($name2) || empty($description2) || empty($photo_path2)) {
+            $everything_fine = false;
+        }
+        if(empty($name3) || empty($description3) || empty($photo_path3)) {
+            $everything_fine = false;
+        }
+        if(empty($name4) || empty($description4) || empty($photo_path4)) {
+            $everything_fine = false;
+        }
+
+        if ($everything_fine) {
+            $stmt = $this->db->prepare("INSERT INTO employees(name, description, photo_path) VALUES(?,?,?)");
+            $stmt->bind_param('sss', $name1, $description1, $photo_path1);
+            $stmt->execute();
+            $stmt->bind_param('sss', $name2, $description2, $photo_path2);
+            $stmt->execute();
+            $stmt->bind_param('sss', $name3, $description3, $photo_path3);
+            $stmt->execute();
+            $stmt->bind_param('sss', $name4, $description4, $photo_path4);
+            $stmt->execute();
+            return true;
+        }
+        return false;
+
+    }
+
 }

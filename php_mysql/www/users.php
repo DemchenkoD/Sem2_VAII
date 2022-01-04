@@ -18,62 +18,125 @@ $app = new App();
     <?php
     include("php_files/header_links.php");
     ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 </head>
 <body>
 <?php
 include("php_files/header_navbar.php");
 ?>
 <script>
-    function DeleteUser(deleteid) {
 
-        console.log(deleteid);
-    }
 
 </script>
 
-<h1 class="container h1_title"> BLOG </h1>
+<h1 class="container h1_title"> Users Table </h1>
 
 <selection>
 
     <div class="container">
-        <?php if($_SESSION['logged_user']->getLogin() == "admin") : ?>
+        <?php
+        if (isset($_SESSION['logged_user'])) {
+            if ($_SESSION['logged_user']->getLogin() != "admin") {
+                echo "<script type='text/javascript'>location.href = 'index.php';</script>";
+            }
 
-        <?php else :
+        } else {
             echo "<script type='text/javascript'>location.href = 'index.php';</script>";
-        endif; ?>
-
-        <?php
-
-        /** @var Review $rev */
-        foreach ($db->getUsersData() as $user) {
-
-            echo '<div class = "alert alert-info mt-2" style="">';
-            echo '<h3 > ID : ' . $user->getId() . '</h3>';
-            echo '<h3 > Login : ' . $user->getLogin() . '</h3>';
-            echo '<h4 > Mail : ' . $user->getMail() . '</h4>';
-            echo '<h5 > Registartion date: ' . $user->getRegistrationDate() . '</h5>';
-
-            echo '<div class="test-end">';
-        ?>
-
-            <button href="?delete=<?=$user->getID()?>" class="btn btn-warning del" name ="<?=$user->getID()?>" onclick="DeleteUser('<?=$user->getID()?>')">
-                Delete
-            </button>
-            <button href="?delete=<?=$user->getID()?>" class="btn btn-warning del" name ="<?=$user->getID()?>" >
-                Update
-            </button>
-
-        <?php
-            echo '</div>';
-            echo '</div>';
         }
         ?>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary margin_bottom" data-toggle="modal" data-target="#exampleModal">
+           Add User
+        </button>
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class = "form-group">
+                            <label>Login</label>
+                            <input type = "text" maxlength=30 name ="" id="login"
+                            class="form-control" placeholder="Login">
+                        </div>
+                        <div class = "form-group">
+                            <label>Email</label>
+                            <input type = "text" maxlength=30 name ="" id="email"
+                                   class="form-control" placeholder="Email">
+                        </div>
+                        <div class = "form-group">
+                            <label>Password</label>
+                            <input type = "text" maxlength=20 name ="" id="password"
+                                   class="form-control" placeholder="Password">
+                        </div>
+                        <div class = "form-group">
+                            <label>Registration date</label>
+                            <input type = "text" maxlength=10 name ="" id="reg_date"
+                                   class="form-control" placeholder="Registration date">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addUserAdmin()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class = "form-group">
+                            <label>Login</label>
+                            <input type = "text" maxlength=30 name ="" id="upd_login"
+                                   class="form-control" placeholder="Login">
+                        </div>
+                        <div class = "form-group">
+                            <label>Email</label>
+                            <input type = "text" maxlength=30 name ="" id="upd_email"
+                                   class="form-control" placeholder="Email">
+                        </div>
+                        <div class = "form-group">
+                            <label>Registration date</label>
+                            <input type = "text" maxlength=10 name ="" id="upd_reg_date"
+                                   class="form-control" placeholder="Registration date">
+                        </div>
+                        <input type="hidden" id="hidden_id">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="UpdateUser()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id = "users_tab">
+
+        </div>
 </selection>
 <button onclick="topFunction()" id="myBtn" >
     <i class = "material-icons">arrow_upward</i>
 </button>
 <script src="btn.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        readUsers();
+    });
+
+</script>
 </body>
 </html>

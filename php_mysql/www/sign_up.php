@@ -35,19 +35,19 @@ include("php_files/header_navbar.php");
 
                             <div class="form-outline form-white mb-4">
                                 <h5>Login:</h5>
-                                <input type="login" name="login_inp" class="form-control form-control-lg" value="<?php echo @$_POST['login_inp']; ?>" />
+                                <input type="login" name="login_inp" maxlength=30 class="form-control form-control-lg" value="<?php echo @$_POST['login_inp']; ?>" />
 
                             </div>
                             <div class="form-outline form-white mb-4">
                                 <h5>Email:</h5>
-                                <input type="email" name="email_inp" class="form-control form-control-lg" value="<?php echo @$_POST['email_inp']; ?>"/>
+                                <input type="email" name="email_inp" maxlength=30 class="form-control form-control-lg" value="<?php echo @$_POST['email_inp']; ?>"/>
 
                             </div>
 
                             <div class="form-outline form-white mb-4">
                                 <h5>Password: </h5>
 
-                                <input type="password" name="password_inp" class="form-control form-control-lg" value="<?php echo @$_POST['password_inp']; ?>" />
+                                <input type="password" name="password_inp" maxlength=20 class="form-control form-control-lg" value="<?php echo @$_POST['password_inp']; ?>" />
 
                             </div>
                             <div class="form-outline form-white mb-4">

@@ -21,7 +21,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="employees2.php">Employees</a>
+                        <a class="nav-link" href="employees.php">Employees</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="about.php">About</a>
@@ -37,6 +37,10 @@
                 <?php if(isset($_SESSION['logged_user'])) : ?>
                 <form class="d-flex" method="post">
                     <div class="me-4"> Hello, <?php echo $_SESSION['logged_user']->getLogin(); ?> </div>
+
+                        <?php if($_SESSION['logged_user']->getLogin() == "admin") : ?>
+                            <a class="btn btn-success me-2" href="users.php" role="button">Users info</a>
+                        <?php endif; ?>
                 <input class="btn btn-success me-2" type="submit" name ='logout' value="Log out">
                 </form>
                 <?php else : ?>
