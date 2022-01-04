@@ -2,6 +2,7 @@
 require_once "Employee.php";
 require_once "Review.php";
 require_once "User.php";
+require_once "Office.php";
 class DBStorage
 {
     private $db;
@@ -52,6 +53,18 @@ class DBStorage
         if ($dbResult->num_rows > 0){
             while ($record = $dbResult->fetch_assoc()) {
                 $result[] = new User($record['id'], $record['login'], $record['mail'], null, $record['registration_date']);
+            }
+        }
+        return $result;
+    }
+    public function getOfficesData(): array
+    {
+        $result = [];
+        $sql = "SELECT * FROM offices ORDER BY id";
+        $dbResult = $this->db->query($sql);
+        if ($dbResult->num_rows > 0){
+            while ($record = $dbResult->fetch_assoc()) {
+                $result[] = new Office($record['id'], $record['country'], $record['city'], $record['address'],$record['phone_number'],$record['working_hours']);
             }
         }
         return $result;

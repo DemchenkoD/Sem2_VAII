@@ -32,7 +32,33 @@ foreach ($db->getUsersData() as $user) {
     $data .= "</table>";
 echo $data;
 }
+if (isset($_POST['readOffices'])) {
 
+    $data = ' <table >';
+
+    foreach ($db->getOfficesData() as $office) {
+
+        $data .= '<tr>
+<td >
+                <div class="row">
+                    <h4 class="col h4_contacts"> Address:</h4>
+                    <div class="col"> '.$office->getCountry().', '.$office->getCity().', '.$office->getAddress().'</div>
+                </div>
+                <div class="row">
+                    <h4 class="col h4_contacts"> Phone number:</h4>
+                    <div class="col"> '.$office->getPhoneNumber().'</div>
+                </div>
+                <div class="row">
+                    <h4 class="col h4_contacts"> Working hours:</h4>
+                    <div class="col"> '.$office->getWorkingHours().'</div>
+                </div>
+    </td>
+ </tr>';
+
+    }
+    $data .= "</table>";
+    echo $data;
+}
 
 if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['reg_date'])){
 

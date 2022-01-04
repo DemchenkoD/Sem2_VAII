@@ -84,7 +84,19 @@ function UpdateUser() {
         }
     )
 }
-
+function readOffices() {
+    var readOffices = "readOffices";
+    $.ajax({
+        url: "backend_ajax.php",
+        method: "POST",
+        data: {
+            readOffices: readOffices
+        },
+        success:function (data,status) {
+            $('#offices_table').html(data);
+        }
+    });
+}
 function readUsers() {
     var readUsers = "readUsers";
     $.ajax({

@@ -17,7 +17,12 @@ $app = new App();
 <?php
 include("php_files/header_navbar.php");
 ?>
+<script type="text/javascript">
+    $(document).ready(function (){
+        readOffices();
+    });
 
+</script>
 <section>
     <div class="container">
         <h1 class="h1_title">Contacts info: </h1>
@@ -26,6 +31,9 @@ include("php_files/header_navbar.php");
                 <img class="w-100 margin_bottom" src="img/contacts_img.jpg" alt = "">
             </div>
             <div class="col-xl-6 col-lg-12 margin_bottom">
+
+                <div id = "offices_table"> </div>
+
                 <div class="row">
                     <h4 class="col h4_contacts"> Address:</h4>
                     <div class="col"> Zilina, 010 08, Vysokoskolakov 20</div>
