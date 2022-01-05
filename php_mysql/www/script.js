@@ -207,6 +207,42 @@ function addEmployee() {
 
     )
 }
+function addOffice() {
+    var country = $('#country').val()
+    var city = $('#city').val()
+    var address = $('#address').val()
+    var phone_number = $('#phone_number').val()
+    var working_hours = $('#working_hours').val()
+
+    if ((country == "") || (city == "") || (address == "") || (phone_number == "") || (working_hours == "")) {
+        alert('Info about office needs to be filled')
+        return
+    }
+
+    if ((country.length > 30) || (city.length > 30) || (address.length > 30)|| (phone_number.length > 16) || (working_hours.length > 100)) {
+        alert('wrong input data')
+        return
+    }
+
+    $.ajax(
+        {
+            url: "backend_ajax.php",
+            method: "POST",
+            data: {
+                add_office:"X",
+                country:country,
+                city: city,
+                address: address,
+                phone_number: phone_number,
+                working_hours: working_hours
+            },
+            success:function (data, status) {
+                readOffices();
+            }
+        }
+
+    )
+}
 
 
 

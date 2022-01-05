@@ -53,7 +53,7 @@ include("php_files/header_navbar.php");
                     <div class="modal-body">
                         <div class = "form-group">
                             <label>Name 1</label>
-                            <input type = "text" id ="name1"
+                            <input type = "text" id ="name1" maxlength=30
                                    class="form-control" placeholder="Name 1">
                         </div>
                         <div class = "form-group">
@@ -68,7 +68,7 @@ include("php_files/header_navbar.php");
                         </div>
                         <div class = "form-group">
                             <label>Name 2</label>
-                            <input type = "text" id ="name2"
+                            <input type = "text" id ="name2" maxlength=30
                                    class="form-control" placeholder="Name 2">
                         </div>
                         <div class = "form-group">
@@ -83,7 +83,7 @@ include("php_files/header_navbar.php");
                         </div>
                         <div class = "form-group">
                             <label>Name 3</label>
-                            <input type = "text" id ="name3"
+                            <input type = "text" id ="name3" maxlength=30
                                    class="form-control" placeholder="Name 3">
                         </div>
                         <div class = "form-group">
@@ -98,7 +98,7 @@ include("php_files/header_navbar.php");
                         </div>
                         <div class = "form-group">
                             <label>Name 4</label>
-                            <input type = "text" id ="name4"
+                            <input type = "text" id ="name4" maxlength=30
                                    class="form-control" placeholder="Name 4">
                         </div>
                         <div class = "form-group">

@@ -236,4 +236,23 @@ class DBStorage
 
     }
 
+    public function addOffice($country, $city, $address, $phone_number, $working_hours) {
+        $everything_fine = true;
+
+        if(empty($country) || empty($city) || empty($address) || empty($phone_number) || empty($working_hours)) {
+            $everything_fine = false;
+        }
+
+        if ($everything_fine) {
+            $stmt = $this->db->prepare("INSERT INTO offices(country, city, address, phone_number, working_hours) VALUES(?,?,?,?,?)");
+            $stmt->bind_param('sssss', $country, $city, $address, $phone_number, $working_hours);
+            $stmt->execute();
+
+            return true;
+        }
+        return false;
+
+    }
+
+
 }

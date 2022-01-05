@@ -41,15 +41,15 @@ if (isset($_POST['readOffices'])) {
         $data .= '<tr>
 <td >
                 <div class="row">
-                    <h4 class="col h4_contacts"> Address:</h4>
+                    <h5 class="col h4_contacts"> Address:</h5>
                     <div class="col"> '.$office->getCountry().', '.$office->getCity().', '.$office->getAddress().'</div>
                 </div>
                 <div class="row">
-                    <h4 class="col h4_contacts"> Phone number:</h4>
+                    <h5 class="col h4_contacts"> Phone number:</h5>
                     <div class="col"> '.$office->getPhoneNumber().'</div>
                 </div>
                 <div class="row">
-                    <h4 class="col h4_contacts"> Working hours:</h4>
+                    <h5 class="col h4_contacts"> Working hours:</h5>
                     <div class="col"> '.$office->getWorkingHours().'</div>
                 </div>
     </td>
@@ -63,7 +63,8 @@ if (isset($_POST['readOffices'])) {
 if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['reg_date'])){
 
     $passwd_hash = password_hash($data['password'], PASSWORD_DEFAULT);
-    $db->registrateUser(new User(null, $data['login'], $data['email'], $passwd_hash, $data['reg_date']));
+    $result = $db->registrateUser(new User(null, $data['login'], $data['email'], $passwd_hash, $data['reg_date']));
+    echo $result;
 
 }
 if (isset($_POST['deleteid'])){
@@ -86,6 +87,12 @@ if (isset($_POST['add_employee'])) {
         $_POST['name2'], $_POST['description2'], $_POST['photo_path2'],
         $_POST['name3'], $_POST['description3'], $_POST['photo_path3'],
         $_POST['name4'], $_POST['description4'], $_POST['photo_path4']);
+
+}
+
+if (isset($_POST['add_office'])) {
+    $result = $db->addOffice($_POST['country'], $_POST['city'], $_POST['address'],
+        $_POST['phone_number'], $_POST['working_hours']);
 
 }
 ?>
