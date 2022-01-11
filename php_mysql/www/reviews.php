@@ -27,7 +27,7 @@ include("php_files/header_navbar.php");
 
 <h1 class="container h1_title"> Reviews: </h1>
 
-<selection>
+<div>
 
     <div class="container">
         <?php if(isset($_SESSION['logged_user'])) : ?>
@@ -73,10 +73,12 @@ include("php_files/header_navbar.php");
         }
         ?>
 
-</selection>
+</div>
 <button onclick="topFunction()" id="myBtn" >
     <i class = "material-icons">arrow_upward</i>
 </button>
 <script src="btn.js"></script>
+</div>
+</div>
 </body>
 </html>

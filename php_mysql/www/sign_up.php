@@ -35,7 +35,7 @@ include("php_files/header_navbar.php");
 
                             <div class="form-outline form-white mb-4">
                                 <h5>Login:</h5>
-                                <input type="login" name="login_inp" maxlength=30 class="form-control form-control-lg" value="<?php echo @$_POST['login_inp']; ?>" />
+                                <input type="text" name="login_inp" maxlength=30 class="form-control form-control-lg" value="<?php echo @$_POST['login_inp']; ?>" />
 
                             </div>
                             <div class="form-outline form-white mb-4">

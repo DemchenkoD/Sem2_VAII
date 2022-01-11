@@ -19,10 +19,10 @@
 }
 
 .carousel-control-prev-icon {
-    background-image: url("arrow-left-circle-fill.svg");
+    background-image: url("img/arrow-left-circle-fill.svg");
 }
 .carousel-control-next-icon {
-    background-image: url("arrow-right-circle-fill.svg");
+    background-image: url("img/arrow-right-circle-fill.svg");
 
 }
 .carousel-control-next{  right: -8%;  }

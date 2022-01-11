@@ -220,7 +220,7 @@ function addOffice() {
     }
 
     if ((country.length > 30) || (city.length > 30) || (address.length > 30)|| (phone_number.length > 16) || (working_hours.length > 100)) {
-        alert('wrong input data')
+        alert('Wrong input data')
         return
     }
 

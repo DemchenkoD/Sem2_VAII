@@ -6,12 +6,12 @@ $data = $_POST;
 if (isset($_POST['readUsers'])) {
 
     $data = ' <table ><tr>
-                    <th>id</th>
-                    <th>login</th>
-                    <th>mail</th>
-                    <th>registration</th>
-                    <th>delete</th>
-                    <th>update</th>
+                    <th>Id</th>
+                    <th>Login</th>
+                    <th>E-mail</th>
+                    <th>Registration date</th>
+                    <th>Delete</th>
+                    <th>Update</th>
                     </tr>';
 
 foreach ($db->getUsersData() as $user) {

@@ -31,17 +31,17 @@ include("php_files/header_navbar.php");
 
 <h1 class="container h1_title"> Users Table </h1>
 
-<selection>
+<div>
 
     <div class="container">
         <?php
         if (isset($_SESSION['logged_user'])) {
             if ($_SESSION['logged_user']->getLogin() != "admin") {
-                echo "<script type='text/javascript'>location.href = 'index.php';</script>";
+                echo "<script>location.href = 'index.php';</script>";
             }
 
         } else {
-            echo "<script type='text/javascript'>location.href = 'index.php';</script>";
+            echo "<script>location.href = 'index.php';</script>";
         }
         ?>
         <!-- Button trigger modal -->
@@ -62,22 +62,22 @@ include("php_files/header_navbar.php");
                     <div class="modal-body">
                         <div class = "form-group">
                             <label>Login</label>
-                            <input type = "text" maxlength=30 name ="" id="login"
-                            class="form-control" placeholder="Login">
+                            <input type = "text" maxlength=30 id="login"
+                                    class="form-control" placeholder="Login">
                         </div>
                         <div class = "form-group">
                             <label>Email</label>
-                            <input type = "text" maxlength=30 name ="" id="email"
+                            <input type = "text" maxlength=30 id="email"
                                    class="form-control" placeholder="Email">
                         </div>
                         <div class = "form-group">
                             <label>Password</label>
-                            <input type = "text" maxlength=20 name ="" id="password"
+                            <input type = "text" maxlength=20 id="password"
                                    class="form-control" placeholder="Password">
                         </div>
                         <div class = "form-group">
                             <label>Registration date</label>
-                            <input type = "text" maxlength=10 name ="" id="reg_date"
+                            <input type = "text" maxlength=10 id="reg_date"
                                    class="form-control" placeholder="Registration date">
                         </div>
                     </div>
@@ -94,7 +94,7 @@ include("php_files/header_navbar.php");
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -102,17 +102,17 @@ include("php_files/header_navbar.php");
                     <div class="modal-body">
                         <div class = "form-group">
                             <label>Login</label>
-                            <input type = "text" maxlength=30 name ="" id="upd_login"
+                            <input type = "text" maxlength=30 id="upd_login"
                                    class="form-control" placeholder="Login">
                         </div>
                         <div class = "form-group">
-                            <label>Email</label>
-                            <input type = "text" maxlength=30 name ="" id="upd_email"
+                            <label>E-mail</label>
+                            <input type = "text" maxlength=30 id="upd_email"
                                    class="form-control" placeholder="Email">
                         </div>
                         <div class = "form-group">
                             <label>Registration date</label>
-                            <input type = "text" maxlength=10 name ="" id="upd_reg_date"
+                            <input type = "text" maxlength=10 id="upd_reg_date"
                                    class="form-control" placeholder="Registration date">
                         </div>
                         <input type="hidden" id="hidden_id">
@@ -127,16 +127,17 @@ include("php_files/header_navbar.php");
         <div id = "users_tab">
 
         </div>
-</selection>
+</div>
 <button onclick="topFunction()" id="myBtn" >
     <i class = "material-icons">arrow_upward</i>
 </button>
 <script src="btn.js"></script>
-<script type="text/javascript">
+<script>
     $(document).ready(function (){
         readUsers();
     });
 
 </script>
+</div>
 </body>
 </html>

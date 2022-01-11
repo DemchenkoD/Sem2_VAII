@@ -39,9 +39,7 @@ class DBStorage
         if ($dbResult->num_rows > 0){
             while ($record = $dbResult->fetch_assoc()) {
                 $result[] = new Review($record['id'], $record['author'], $record['mail'], $record['rating'], $record['comment'], $record['likes'], $record['dislikes']);
-
             }
-
         }
         return $result;
     }
@@ -92,9 +90,7 @@ class DBStorage
             return true;
         }
         return false;
-
     }
-
 
     public function getCountEmployees() {
         return $this->db->query("SELECT COUNT(*) FROM employees");
@@ -153,10 +149,8 @@ class DBStorage
 
     }
     public function checkUniqUserLogin( $login) {
-        //return $this->db->query("SELECT COUNT(*) FROM employees");
             $result = $this->db->query("SELECT * FROM users WHERE login = '".$login."'");
-            //$result = $resultDB->fetch_assoc();
-            //echo "<script type='text/javascript'>alert('Log ".$result."')</script>";
+
             if ($result->num_rows > 0) {
                 return false;
             }

@@ -17,7 +17,7 @@ $app = new App();
 <?php
 include("php_files/header_navbar.php");
 ?>
-<script type="text/javascript">
+<script>
     $(document).ready(function (){
         readOffices();
     });

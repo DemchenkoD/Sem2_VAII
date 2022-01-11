@@ -23,36 +23,36 @@ include("php_files/header_navbar.php");
 
 <h1 class="container h1_title"> Add Post</h1>
 
-<selection>
+<div>
     <div class="container">
     <form method="post">
         <div class="form-group">
 
 
             <?php if(isset($_SESSION['logged_user'])) : ?>
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" maxlength="30" id="name" name="name" aria-describedby="name" value = "<?php echo $_SESSION['logged_user']->getLogin(); ?>" readonly="readonly"><br>
-                <label for="mail">Mail:</label>
+                <label>Name:</label>
+                <input type="text" class="form-control" maxlength="30"  name="name" value = "<?php echo $_SESSION['logged_user']->getLogin(); ?>" readonly="readonly"><br>
+                <label >Mail:</label>
                 <input type="email" class="form-control" maxlength="30" name="mail" id="add_review_email"  value = "<?php echo $_SESSION['logged_user']->getMail(); ?>" readonly="readonly"><br>
 
             <?php else : ?>
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" maxlength="30" id="name" name="name" aria-describedby="name" placeholder="Add name" ><br>
-                <label for="mail">Mail:</label>
+                <label>Name:</label>
+                <input type="text" class="form-control" maxlength="30" name="name" placeholder="Add name" ><br>
+                <label >Mail:</label>
                 <input type="email" class="form-control" maxlength="30" name="mail" id="add_review_email"  placeholder="Add mail"><br>
 
             <?php endif; ?>
-            <label for="rating">Rating:</label>
+            <label>Rating:</label>
             <input type="number"  class="form-control" min="0" max="10" name="rating" ><br>
-            <label for="comment">Comment:</label>
-            <input type="text" class="form-control"  name="comment" aria-describedby="comment" placeholder="Add text"><br>
+            <label>Comment:</label>
+            <input type="text" class="form-control"  name="comment" placeholder="Add text"><br>
 
         </div>
         <input type="submit" class="btn btn-success" name="add_review" value="Odoslat" ><br>
 
     </form>
     </div>
-</selection>
+</div>
 
 </body>
 </html>
