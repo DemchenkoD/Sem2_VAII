@@ -48,7 +48,7 @@ include("php_files/header_navbar.php");
             <input type="text" class="form-control"  name="comment" placeholder="Add text"><br>
 
         </div>
-        <input type="submit" class="btn btn-success" name="add_review" value="Odoslat" ><br>
+        <input type="submit" class="btn btn-success" name="add_review" value="Add" ><br>
 
     </form>
     </div>

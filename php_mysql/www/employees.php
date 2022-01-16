@@ -116,7 +116,7 @@ include("php_files/header_navbar.php");
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" data-dismiss="modal" name="add_employee"
-                                onclick="addEmployee()">Save changes
+                                onclick="addEmployee()">Add
                         </button>
                     </div>
                 </div>

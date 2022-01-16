@@ -83,7 +83,7 @@ include("php_files/header_navbar.php");
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addUserAdmin()">Save changes</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addUserAdmin()">Add</button>
                     </div>
                 </div>
             </div>

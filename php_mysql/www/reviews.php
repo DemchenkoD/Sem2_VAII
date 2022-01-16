@@ -30,11 +30,9 @@ include("php_files/header_navbar.php");
 <div>
 
     <div class="container">
-        <?php if(isset($_SESSION['logged_user'])) : ?>
-            <a class="btn btn-success margin_bottom" href="add_review.php" role="button">Add review</a>
-        <?php else : ?>
-            <div>You need to log in to add review</div>
-        <?php endif; ?>
+
+        <a class="btn btn-success margin_bottom" href="add_review.php" role="button">Add review</a>
+
 
         <?php
 
