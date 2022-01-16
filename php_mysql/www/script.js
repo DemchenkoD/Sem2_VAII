@@ -114,8 +114,12 @@ function addUserAdmin() {
     var login = $('#login').val();
     var email = $('#email').val();
     var reg_date = $('#reg_date').val();
+    var password = $('#password').val();
+    //alert('Login' + login + "email " + email + reg_date)
 
-    if ((login == "") || (email == "") || (reg_date == "")) {
+
+
+    if ((login == "") || (email == "") || (reg_date == "")|| (password == "")) {
         alert('Info about user need to be filled')
         return
     }

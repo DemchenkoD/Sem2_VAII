@@ -44,7 +44,7 @@ include("php_files/header_navbar.php");
             echo '<div class = "alert alert-info mt-2">';
             echo '<h3 >' . $rev->getAuthor() . '</h3>';
             echo '<h4 > Rating: ' . $rev->getRating() . '</h4>';
-            echo '<h5 id="reviews_mails"> Mail: ' . $rev->getMail() . '</h5>';
+            echo '<h5 > Mail: ' . $rev->getMail() . '</h5>';
             echo '<p>' . $rev->getComment() . '</p>';
             //echo '<p> ID ' . $rev->getId() . '</p>';
             $likes = $rev->getLikes();
@@ -78,7 +78,6 @@ include("php_files/header_navbar.php");
     <i class = "material-icons">arrow_upward</i>
 </button>
 <script src="btn.js"></script>
-</div>
 </div>
 </body>
 </html>

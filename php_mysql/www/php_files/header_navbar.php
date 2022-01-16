@@ -46,8 +46,8 @@
                 <?php else : ?>
                 <form class="d-flex">
 
-                    <a href = "sign_up.php" class="btn btn-success me-2" type="submit">Sign up</a>
-                    <a href = "login.php" class="btn btn-success" type="submit">Login</a>
+                    <a href = "sign_up.php" class="btn btn-success me-2">Sign up</a>
+                    <a href = "login.php" class="btn btn-success" >Login</a>
 
                 </form>
                 <?php endif; ?>
