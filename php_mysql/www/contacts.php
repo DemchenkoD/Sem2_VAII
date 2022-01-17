@@ -40,7 +40,7 @@ include("php_files/header_navbar.php");
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add office</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -75,7 +75,7 @@ include("php_files/header_navbar.php");
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" data-dismiss="modal" name="add_office" onclick="addOffice()" >Save changes</button>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal" name="add_office" onclick="addOffice()" >Add</button>
                     </div>
                 </div>
             </div>
