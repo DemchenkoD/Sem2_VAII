@@ -39,7 +39,7 @@
                     <div class="me-4"> Hello, <?php echo $_SESSION['logged_user']->getLogin(); ?> </div>
 
                         <?php if($_SESSION['logged_user']->getLogin() == "admin") : ?>
-                            <a class="btn btn-success me-2" href="users.php" role="button">Users info</a>
+                            <a class="btn btn-success me-2 users_btn" href="users.php" role="button">Users info</a>
                         <?php endif; ?>
                 <input class="btn btn-success me-2" type="submit" name ='logout' value="Log out">
                 </form>

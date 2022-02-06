@@ -31,7 +31,7 @@ include("php_files/header_navbar.php");
 
     <div class="container">
 
-        <a class="btn btn-success margin_bottom" href="add_review.php" role="button">Add review</a>
+        <a class="btn btn-success margin_bottom add_review_btn" href="add_review.php" role="button">Add review</a>
 
 
         <?php
